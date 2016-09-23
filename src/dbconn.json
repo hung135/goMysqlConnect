@@ -1,19 +1,29 @@
 {"object":
 {
   "buffer_size": 10,
-  "DumpExecutable":"mysqldump.exe",
-  "ClientExecutable":"mysql.exe",
+  "Executable":{
+    "linux":{
+      "mysqldump":"mysqldump",
+      "client":"mysql"
+    },
+    "windows":{
+      "mysqldump":"mysqldump.exe",
+      "client":"mysql.exe"
+
+    }
+  },
+
   "Databases":
   [
     {
-      "host": "127.0.0.1",
-      "user": "root",
-      "pass": "abc123",
+      "host": "ctdevdb1.cybertip.org",
+      "user": "hnguyen",
+      "pass": "hnguyen",
       "type": "mysql",
-      "dumpschema":["mysql","sys","information_schema","performance_schema"],
+      "dumpschema":["ClassList","metaDB","cvip_lab","ecu_ta_db"],
       "name": "go",
       "port": "3306",
-      "dumpoptions":["routines"],
+      "dumpoptions":["routines","lock-tables=false","enable-clear-text-plugin"],
       "Tables":
       [
         {
