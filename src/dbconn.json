@@ -1,14 +1,19 @@
 {"object":
 {
   "buffer_size": 10,
+  "DumpExecutable":"mysqldump.exe",
+  "ClientExecutable":"mysql.exe",
   "Databases":
   [
     {
-      "host": "localhost",
+      "host": "127.0.0.1",
       "user": "root",
-      "pass": "",
+      "pass": "abc123",
       "type": "mysql",
+      "dumpschema":["mysql","sys","information_schema","performance_schema"],
       "name": "go",
+      "port": "3306",
+      "dumpoptions":["routines"],
       "Tables":
       [
         {

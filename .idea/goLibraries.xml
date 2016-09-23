@@ -4,6 +4,7 @@
     <option name="urls">
       <list>
         <option value="file://C:/Go/externlib" />
+        <option value="file://$PROJECT_DIR$" />
       </list>
     </option>
   </component>

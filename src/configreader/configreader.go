@@ -25,7 +25,7 @@ type DatabasesType struct {
 	Type   string
 	Name   string
 	Port string
-	Schema []string
+	DumpSchema []string
 	DumpOption []string
 	Tables []TablesType
 }
