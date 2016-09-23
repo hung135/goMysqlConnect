@@ -16,6 +16,7 @@
       <root url="file://C:/Go/src/runtime" />
       <root url="file://C:/Go/src/debug" />
       <root url="file://C:/Go/src/os" />
+      <root url="file://C:/Go/bin/src/github.com" />
       <root url="file://C:/Go/src/builtin" />
       <root url="file://C:/Go/src/go" />
       <root url="file://C:/Go/src/bytes" />
@@ -63,6 +64,7 @@
       <root url="file://C:/Go/src/runtime" />
       <root url="file://C:/Go/src/debug" />
       <root url="file://C:/Go/src/os" />
+      <root url="file://C:/Go/bin/src/github.com" />
       <root url="file://C:/Go/src/builtin" />
       <root url="file://C:/Go/src/go" />
       <root url="file://C:/Go/src/bytes" />

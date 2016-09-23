@@ -46,6 +46,9 @@ func deleteFile(path string) {
 	var err = os.Remove(path)
 	checkError(err)
 }
+
+
+
 func DumpFile(f configreader.Jsonobject, cmdName string) {
 
 
@@ -66,9 +69,9 @@ func DumpFile(f configreader.Jsonobject, cmdName string) {
 			deleteFile(dumpPath)
 			options := append(x.dumpOptions(), fmt.Sprintf(`-r%v`, dumpPath))
 			fmt.Println("Dumping",x.DB,options)
-			out, err := exec.Command(cmdName, options...).Output()
+			 dmpout, err := exec.Command(cmdName, options...).Output()
 			if err != nil {
-				fmt.Print("error occured dumping schema:",x.DB, out)
+				fmt.Print("error occured dumping schema:",x.DB, dmpout)
 				deleteFile(dumpPath)
 			}
 		}
