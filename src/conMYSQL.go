@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"mysqldumper"
 	"runtime"
+	"os"
 )
 
 
@@ -17,13 +18,22 @@ func main() {
 
 	var mysqlDumpPath string
 	var TargetPath string
-	f := configreader.ReadConfig("../src/dbconn.json")
+
+	argsWithProg := os.Args
+	var jsonPath string
+	if (len(argsWithProg)==1){
+		jsonPath="../src/dbconn.json"
+	} else{
+		jsonPath=os.Args[1]
+	}
+
+	f := configreader.ReadConfig(jsonPath)
 	if runtime.GOOS == "windows" {
-		fmt.Println("Hello from Windows")
+
 		fmt.Print(f.Object.Executables[1].Mysqldump)
 		mysqlDumpPath =f.Object.Executables[1].Mysqldump
 		TargetPath=f.Object.Executables[1].TargetDir
-	} else {fmt.Println("Hello from Linux")
+	} else {
 		fmt.Print(f.Object.Executables[0].Mysqldump)
 		mysqlDumpPath =f.Object.Executables[0].Mysqldump
 		TargetPath=f.Object.Executables[0].TargetDir

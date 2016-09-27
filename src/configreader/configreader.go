@@ -5,7 +5,11 @@ import (
 	"io/ioutil"
 	"encoding/json"
 )
-import "os/exec"
+import (
+	"os/exec"
+	"fmt"
+	"os"
+)
 
 type Jsonobject struct {
 	Object ObjectType
@@ -14,7 +18,7 @@ type Jsonobject struct {
 type ObjectType struct {
 	Buffer_size int
 	Executables [] OSExecutable
-	Databases   []DatabasesType
+	Databases   [] DatabasesType
 }
 type OSExecutable struct {
 	OS string
@@ -48,11 +52,19 @@ type TypesType struct {
 	Value string
 }
 
+func checkError(err error) {
+
+	if err != nil {
+		fmt.Println(err.Error())
+		os.Exit(0)
+	}
+}
 
 func ReadConfig(file string) Jsonobject{
 	var dbconn Jsonobject
 
-	configdata,_ := ioutil.ReadFile(file)
+	configdata,err := ioutil.ReadFile(file)
+	checkError(err)
 	json.Unmarshal(configdata,&dbconn)
 return dbconn
 
