@@ -50,12 +50,12 @@ func deleteFile(path string) {
 
 
 
-func DumpFile(f configreader.Jsonobject, cmdName string) {
+func DumpFile(f configreader.Jsonobject, cmdName string,TargetPath string) {
 
 
 	num_schemas := len(f.Object.Databases[0].DumpSchema)
 	num_db:=len(f.Object.Databases)
-	TargetPath:=f.Object.Executables[0].TargetDir
+
 	//var x MySQL
 	for ii := 0; ii < num_db; ii++ {
 		for jj := 0; jj < num_schemas; jj++ {
