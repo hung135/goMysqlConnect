@@ -1,45 +1,87 @@
-{"object":
 {
-  "buffer_size": 10,
-  "Executable":{
-    "linux":{
-      "mysqldump":"mysqldump",
-      "client":"mysql"
-    },
-    "windows":{
-      "mysqldump":"mysqldump.exe",
-      "client":"mysql.exe"
+  "object": {
+    "buffer_size": 1110,
+    "Executables": [
+      {
+        "OS": "linux",
+        "mysqldump": "mysqldump",
+        "TargetDir": "/Volumes/3tb/godump",
+        "client": "mysql"
+      },
+      {
+        "OS": "windows",
+        "mysqldump": "mysqldump.exe",
+        "client": "mysql.exe",
+        "TargetDir": "C:/temp/godump"
+      }
+    ],
+    "Databases": [
+      {
+        "name": "ECD",
+        "host": "ctdevdb1.cybertip.org",
+        "user": "hnguyen",
+        "pass": "hnguyen",
+        "type": "mysql",
+        "dumpschema": [
+          "ClassList",
+          "metaDB",
+          "cvip_lab",
+          "ecu_ta_db"
+        ],
 
-    }
-  },
+        "port": "4406",
+        "dumpoptions": [
+          "routines",
+          "lock-tables=false",
+          "enable-clear-text-plugin"
+        ],
+        "Tables": [
+          {
+            "name": "testing",
+            "statment": "teststring",
+            "regex": "teststring ([0-9]+) ([A-z]+)",
+            "Types": [
+              {
+                "id": "int",
+                "value": "string"
+              }
+            ]
+          }
+        ]
+      }
+      ,{
+        "name": "mysql103",
+        "host": "172.25.6.103",
+        "user": "hung",
+        "pass": "hnguyen",
+        "type": "mysql",
+        "dumpschema": [
+          "ClassList",
+          "metaDB",
+          "cvip_lab",
+          "ecu_ta_db"
+        ],
 
-  "Databases":
-  [
-    {
-      "host": "ctdevdb1.cybertip.org",
-      "user": "hnguyen",
-      "pass": "hnguyen",
-      "type": "mysql",
-      "dumpschema":["ClassList","metaDB","cvip_lab","ecu_ta_db"],
-      "name": "go",
-      "port": "3306",
-      "dumpoptions":["routines","lock-tables=false","enable-clear-text-plugin"],
-      "Tables":
-      [
-        {
-          "name": "testing",
-          "statment": "teststring",
-          "regex": "teststring ([0-9]+) ([A-z]+)",
-          "Types":
-          [
-            {
-              "id": "int",
-              "value": "string"
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
+        "port": "3306",
+        "dumpoptions": [
+          "routines",
+          "lock-tables=false",
+          "enable-clear-text-plugin"
+        ],
+        "Tables": [
+          {
+            "name": "testing",
+            "statment": "teststring",
+            "regex": "teststring ([0-9]+) ([A-z]+)",
+            "Types": [
+              {
+                "id": "int",
+                "value": "string"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 }

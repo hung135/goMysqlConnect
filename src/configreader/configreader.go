@@ -13,9 +13,15 @@ type Jsonobject struct {
 
 type ObjectType struct {
 	Buffer_size int
-	DumpExecutable string
-	ClientExecutable string
+	Executables [] OSExecutable
 	Databases   []DatabasesType
+}
+type OSExecutable struct {
+	OS string
+	Mysqldump string
+	Myslclient string
+	TargetDir string
+
 }
 
 type DatabasesType struct {

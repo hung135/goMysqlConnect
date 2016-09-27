@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os/exec"
 	"os"
+	"time"
 )
 
 
@@ -54,6 +55,7 @@ func DumpFile(f configreader.Jsonobject, cmdName string) {
 
 	num_schemas := len(f.Object.Databases[0].DumpSchema)
 	num_db:=len(f.Object.Databases)
+	TargetPath:=f.Object.Executables[0].TargetDir
 	//var x MySQL
 	for ii := 0; ii < num_db; ii++ {
 		for jj := 0; jj < num_schemas; jj++ {
@@ -62,10 +64,18 @@ func DumpFile(f configreader.Jsonobject, cmdName string) {
 				Password:f.Object.Databases[ii].Pass,
 				Port:f.Object.Databases[ii].Port,
 				DB:f.Object.Databases[ii].DumpSchema[jj]}
+			ServerName:=f.Object.Databases[ii].Name
+			FullPath:=TargetPath+"/"+ServerName
 
-			dumpPath := (f.Object.Databases[ii].DumpSchema[jj] + ".sql")
+			t:=time.Now()
+
+			filename := (f.Object.Databases[ii].DumpSchema[jj]+ t.Format("20060102")  +".sql")
+
+
 			//dumpPath := fmt.Sprintf(`bu_%v_%v.sql`, x.DB, time.Now().Unix())
+			dumpPath:=FullPath+"/"+filename
 
+			os.MkdirAll(FullPath,os.ModePerm)
 			deleteFile(dumpPath)
 			options := append(x.dumpOptions(), fmt.Sprintf(`-r%v`, dumpPath))
 			fmt.Println("Dumping",x.DB,options)
