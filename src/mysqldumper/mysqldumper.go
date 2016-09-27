@@ -27,12 +27,21 @@ type MySQL struct {
 }
 
 func (x MySQL) dumpOptions() []string {
-	options := x.Options
+	var options[] string
+	//options := x.Options
 	options = append(options, fmt.Sprintf(`-h%v`, x.Host))
 	options = append(options, fmt.Sprintf(`-P%v`, x.Port))
 	options = append(options, fmt.Sprintf(`-u%v`, x.User))
 	options = append(options, fmt.Sprintf(`-p%v`, x.Password))
+
+	lenOpt:=len(x.Options)
+	for ii:=0;ii<lenOpt;ii++{
+		options = append(options, x.Options[ii])
+	}
+
 	options = append(options, x.DB)
+	//fmt.Println("\n",options ,"xxxxx \n")
+
 	return options
 }
 func checkError(err error) {
@@ -63,7 +72,8 @@ func DumpFile(f configreader.Jsonobject, cmdName string,TargetPath string) {
 				User:f.Object.Databases[ii].User,
 				Password:f.Object.Databases[ii].Pass,
 				Port:f.Object.Databases[ii].Port,
-				DB:f.Object.Databases[ii].DumpSchema[jj]}
+				DB:f.Object.Databases[ii].DumpSchema[jj],
+				Options:f.Object.Databases[ii].DumpOptions}
 			ServerName:=f.Object.Databases[ii].Name
 			FullPath:=TargetPath+"/"+ServerName
 
@@ -78,7 +88,7 @@ func DumpFile(f configreader.Jsonobject, cmdName string,TargetPath string) {
 			os.MkdirAll(FullPath,os.ModePerm)
 			deleteFile(dumpPath)
 			options := append(x.dumpOptions(), fmt.Sprintf(`-r%v`, dumpPath))
-			fmt.Println("Dumping",x.DB,options)
+			fmt.Println("Dumping",x.DB,"-->",options)
 			 dmpout, err := exec.Command(cmdName, options...).Output()
 			if err != nil {
 				fmt.Print("error occured dumping schema:",x.DB, dmpout)

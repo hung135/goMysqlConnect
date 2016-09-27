@@ -32,7 +32,7 @@ type DatabasesType struct {
 	Name   string
 	Port string
 	DumpSchema []string
-	DumpOption []string
+	DumpOptions []string
 	Tables []TablesType
 }
 

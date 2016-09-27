@@ -31,9 +31,12 @@
 
         "port": "4406",
         "dumpoptions": [
-          "routines",
-          "lock-tables=false",
-          "enable-clear-text-plugin"
+          "--no-data",
+          "--allow-keywords",
+          "--routines",
+          "--triggers",
+          "--lock-tables=false",
+          "--enable-cleartext-plugin"
         ],
         "Tables": [
           {
@@ -64,9 +67,12 @@
 
         "port": "3306",
         "dumpoptions": [
-          "routines",
-          "lock-tables=false",
-          "enable-clear-text-plugin"
+          "--no-data",
+          "--allow-keywords",
+          "--routines",
+          "--triggers",
+          "--lock-tables=false",
+          "--enable-cleartext-plugin"
         ],
         "Tables": [
           {

@@ -12,6 +12,9 @@ import (
 
 func main() {
 
+
+
+
 	var mysqlDumpPath string
 	var TargetPath string
 	f := configreader.ReadConfig("../src/dbconn.json")
